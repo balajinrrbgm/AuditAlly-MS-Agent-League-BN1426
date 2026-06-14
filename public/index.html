@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AuditAlly — Compliance Readiness Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="brand">
+        <span class="logo">🛡️</span>
+        <div>
+          <h1>AuditAlly</h1>
+          <p class="tagline">Continuous audit &amp; compliance readiness for Microsoft 365 Copilot</p>
+        </div>
+      </div>
+      <div class="mode" id="mode">mode: …</div>
+    </header>
+
+    <main>
+      <section class="panel controls">
+        <h2>Ask AuditAlly</h2>
+        <div class="ask">
+          <input id="question" type="text" placeholder="e.g. How often must we run an IR tabletop?" />
+          <button id="askBtn">Ask (grounded)</button>
+        </div>
+        <div id="answer" class="answer hidden"></div>
+
+        <h2>Readiness</h2>
+        <div class="row">
+          <select id="framework">
+            <option value="">All frameworks</option>
+            <option value="SOC2">SOC 2</option>
+            <option value="ISO27001">ISO 27001</option>
+            <option value="GDPR">GDPR</option>
+          </select>
+          <button id="refreshBtn">Refresh cockpit</button>
+        </div>
+
+        <h2>Controls</h2>
+        <div id="controlList" class="control-list">Loading…</div>
+      </section>
+
+      <section class="panel cockpit">
+        <div class="cockpit-head">
+          <h2>MCP App · Compliance Cockpit</h2>
+          <span class="hint">This is the exact interactive card Copilot renders.</span>
+        </div>
+        <iframe id="cockpitFrame" title="Compliance Cockpit" src="/ui/cockpit"></iframe>
+
+        <div id="detail" class="detail hidden">
+          <div class="cockpit-head">
+            <h2>MCP App · Control detail</h2>
+            <button id="closeDetail" class="link">close</button>
+          </div>
+          <iframe id="detailFrame" title="Control detail"></iframe>
+        </div>
+
+        <h2>Remediation tasks <span class="hint">(OAuth-secured write)</span></h2>
+        <div id="tasks" class="tasks">No tasks yet.</div>
+      </section>
+    </main>
+
+    <footer>
+      AuditAlly · Microsoft Agents League — Battle #3 (Enterprise Agents) · Foundry IQ grounding ·
+      MCP Apps · OAuth · <strong>all data is synthetic</strong>.
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

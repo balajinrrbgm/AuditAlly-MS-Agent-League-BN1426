@@ -1,0 +1,115 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AuditAlly API",
+    "description": "Backend operations for the AuditAlly declarative agent. Fronts the AuditAlly MCP server tools. All sample data is synthetic.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "${{OPENAPI_SERVER_URL}}",
+      "description": "AuditAlly server (e.g. https://your-app.azurewebsites.net)"
+    }
+  ],
+  "security": [{ "oAuth2": ["AuditAlly.Read", "AuditAlly.Write"] }],
+  "components": {
+    "securitySchemes": {
+      "oAuth2": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+            "tokenUrl": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+            "scopes": {
+              "AuditAlly.Read": "Read controls, evidence, readiness, and findings",
+              "AuditAlly.Write": "Create and update remediation tasks"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/api/readiness": {
+      "get": {
+        "operationId": "getReadiness",
+        "summary": "Get audit readiness report",
+        "parameters": [
+          {
+            "name": "framework",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "string", "enum": ["SOC2", "ISO27001", "GDPR"] }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Readiness report", "content": { "application/json": {} } }
+        }
+      }
+    },
+    "/api/control/{id}": {
+      "get": {
+        "operationId": "getControl",
+        "summary": "Get control detail with grounded citations",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Control detail", "content": { "application/json": {} } }
+        }
+      }
+    },
+    "/api/ask": {
+      "post": {
+        "operationId": "askPolicy",
+        "summary": "Ask a grounded policy question",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["question"],
+                "properties": { "question": { "type": "string" } }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Grounded answer with citations", "content": { "application/json": {} } }
+        }
+      }
+    },
+    "/api/findings": {
+      "get": {
+        "operationId": "listFindings",
+        "summary": "List open audit findings",
+        "responses": {
+          "200": { "description": "Open findings", "content": { "application/json": {} } }
+        }
+      }
+    },
+    "/api/tasks": {
+      "post": {
+        "operationId": "createRemediationTask",
+        "summary": "Create remediation task(s) for a control's gaps",
+        "security": [{ "oAuth2": ["AuditAlly.Write"] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["controlId"],
+                "properties": { "controlId": { "type": "string" } }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Created tasks", "content": { "application/json": {} } }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/v1.5/schema.json",
+  "version": "v1.5",
+  "name": "AuditAlly",
+  "description": "Your continuous audit & compliance readiness ally. Ask about controls and policies (grounded with citations), check SOC 2 / ISO 27001 / GDPR readiness, find gaps, and create remediation tasks — all inside Microsoft 365 Copilot.",
+  "instructions": "$[file('instruction.md')]",
+  "conversation_starters": [
+    {
+      "title": "Audit readiness overview",
+      "text": "Show our overall audit readiness across SOC 2, ISO 27001, and GDPR."
+    },
+    {
+      "title": "Top gaps to close",
+      "text": "What are the top compliance gaps I should fix before our next audit?"
+    },
+    {
+      "title": "Policy question",
+      "text": "How often must we run an incident-response tabletop exercise, and where is that documented?"
+    },
+    {
+      "title": "Fix a control",
+      "text": "Create remediation tasks to close the gaps for control CTL-004."
+    }
+  ],
+  "capabilities": [
+    {
+      "name": "CodeInterpreter"
+    }
+  ],
+  "actions": [
+    {
+      "id": "auditallyActions",
+      "file": "aiPlugin.json"
+    }
+  ]
+}

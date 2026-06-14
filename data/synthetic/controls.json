@@ -1,0 +1,153 @@
+{
+  "frameworks": {
+    "SOC2": "SOC 2 Trust Services Criteria (2017)",
+    "ISO27001": "ISO/IEC 27001:2022 Annex A",
+    "GDPR": "EU General Data Protection Regulation"
+  },
+  "controls": [
+    {
+      "id": "CTL-001",
+      "framework": "SOC2",
+      "code": "CC6.1",
+      "title": "Logical access — least privilege",
+      "category": "Access Control",
+      "severity": "high",
+      "ownerRole": "Security Engineering",
+      "description": "Logical access to systems and data is restricted to authorized users based on least privilege and is reviewed periodically.",
+      "requiredEvidence": ["access-review", "rbac-policy"],
+      "policyDoc": "access-control-policy.md"
+    },
+    {
+      "id": "CTL-002",
+      "framework": "SOC2",
+      "code": "CC6.6",
+      "title": "Multi-factor authentication",
+      "category": "Access Control",
+      "severity": "high",
+      "ownerRole": "IT Operations",
+      "description": "MFA is enforced for all users accessing internal and customer-facing systems.",
+      "requiredEvidence": ["mfa-config", "conditional-access-policy"],
+      "policyDoc": "access-control-policy.md"
+    },
+    {
+      "id": "CTL-003",
+      "framework": "SOC2",
+      "code": "CC7.2",
+      "title": "Security monitoring & alerting",
+      "category": "Operations",
+      "severity": "medium",
+      "ownerRole": "Security Operations",
+      "description": "Security events are logged, monitored, and alerts are triaged within defined SLAs.",
+      "requiredEvidence": ["siem-config", "incident-log"],
+      "policyDoc": "incident-response-policy.md"
+    },
+    {
+      "id": "CTL-004",
+      "framework": "SOC2",
+      "code": "CC7.4",
+      "title": "Incident response plan",
+      "category": "Operations",
+      "severity": "high",
+      "ownerRole": "Security Operations",
+      "description": "A documented incident response plan exists, is tested at least annually, and post-incident reviews are recorded.",
+      "requiredEvidence": ["ir-plan", "tabletop-exercise"],
+      "policyDoc": "incident-response-policy.md"
+    },
+    {
+      "id": "CTL-005",
+      "framework": "ISO27001",
+      "code": "A.5.23",
+      "title": "Cloud services security",
+      "category": "Supplier & Cloud",
+      "severity": "medium",
+      "ownerRole": "Cloud Platform",
+      "description": "Security requirements for acquisition, use, and exit of cloud services are defined and managed.",
+      "requiredEvidence": ["cloud-config-baseline", "vendor-assessment"],
+      "policyDoc": "vendor-management-policy.md"
+    },
+    {
+      "id": "CTL-006",
+      "framework": "ISO27001",
+      "code": "A.8.8",
+      "title": "Technical vulnerability management",
+      "category": "Operations",
+      "severity": "high",
+      "ownerRole": "Security Engineering",
+      "description": "Vulnerabilities are identified, evaluated, and remediated within risk-based timelines.",
+      "requiredEvidence": ["vuln-scan-report", "patch-records"],
+      "policyDoc": "vulnerability-management-policy.md"
+    },
+    {
+      "id": "CTL-007",
+      "framework": "ISO27001",
+      "code": "A.8.13",
+      "title": "Information backup",
+      "category": "Resilience",
+      "severity": "medium",
+      "ownerRole": "IT Operations",
+      "description": "Backups of information, software, and systems are maintained and tested per the backup policy.",
+      "requiredEvidence": ["backup-config", "restore-test"],
+      "policyDoc": "business-continuity-policy.md"
+    },
+    {
+      "id": "CTL-008",
+      "framework": "ISO27001",
+      "code": "A.6.3",
+      "title": "Security awareness training",
+      "category": "People",
+      "severity": "medium",
+      "ownerRole": "People & Culture",
+      "description": "Personnel receive security awareness training on hire and at least annually.",
+      "requiredEvidence": ["training-completion", "training-content"],
+      "policyDoc": "security-awareness-policy.md"
+    },
+    {
+      "id": "CTL-009",
+      "framework": "GDPR",
+      "code": "Art.30",
+      "title": "Records of processing activities",
+      "category": "Privacy",
+      "severity": "high",
+      "ownerRole": "Privacy Office",
+      "description": "Records of processing activities (RoPA) are maintained and kept current for all personal data flows.",
+      "requiredEvidence": ["ropa-register"],
+      "policyDoc": "data-protection-policy.md"
+    },
+    {
+      "id": "CTL-010",
+      "framework": "GDPR",
+      "code": "Art.32",
+      "title": "Security of processing",
+      "category": "Privacy",
+      "severity": "high",
+      "ownerRole": "Privacy Office",
+      "description": "Appropriate technical and organizational measures (encryption, pseudonymization) protect personal data.",
+      "requiredEvidence": ["encryption-config", "dpia"],
+      "policyDoc": "data-protection-policy.md"
+    },
+    {
+      "id": "CTL-011",
+      "framework": "GDPR",
+      "code": "Art.33",
+      "title": "Breach notification readiness",
+      "category": "Privacy",
+      "severity": "medium",
+      "ownerRole": "Privacy Office",
+      "description": "Processes exist to detect, document, and notify supervisory authorities of breaches within 72 hours.",
+      "requiredEvidence": ["breach-runbook"],
+      "policyDoc": "incident-response-policy.md"
+    },
+    {
+      "id": "CTL-012",
+      "framework": "SOC2",
+      "code": "CC8.1",
+      "title": "Change management",
+      "category": "Operations",
+      "severity": "medium",
+      "ownerRole": "Engineering",
+      "description": "Changes to infrastructure and applications follow a documented, reviewed, and approved process.",
+      "requiredEvidence": ["change-policy", "change-tickets"],
+      "policyDoc": "change-management-policy.md"
+    }
+  ]
+}

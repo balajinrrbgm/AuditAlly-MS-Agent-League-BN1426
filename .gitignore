@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+dist/
+
+# Environment / secrets — NEVER commit
+.env
+.env.*
+!.env.example
+appsettings.json
+appsettings.*.json
+*.user
+**/.secrets/
+config/secrets.*
+*.pem
+*.pfx
+*.key
+
+# Build / packaging artifacts
+appPackage/build/
+*.zip
+
+# Local runtime data (writes from MCP server land here)
+data/runtime/*.json
+!data/runtime/.gitkeep
+
+# Logs
+*.log
+logs/
+
+# OS / editor
+.DS_Store
+Thumbs.db

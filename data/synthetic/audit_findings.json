@@ -1,0 +1,9 @@
+{
+  "_note": "Synthetic prior-audit findings and remediation tasks. AuditAlly reads these to explain history and writes new remediation tasks here (and to data/runtime/tasks.json at runtime).",
+  "findings": [
+    { "id": "FND-2025-014", "controlId": "CTL-004", "framework": "SOC2", "severity": "high", "title": "IR tabletop exercise not performed in audit period", "status": "open", "raisedDate": "2025-12-10", "auditor": "External Auditor (synthetic)", "recommendation": "Run an annual incident-response tabletop and retain minutes as evidence." },
+    { "id": "FND-2025-021", "controlId": "CTL-006", "framework": "ISO27001", "severity": "high", "title": "Vulnerability scan evidence is older than one quarter", "status": "open", "raisedDate": "2026-02-15", "auditor": "Internal Audit (synthetic)", "recommendation": "Re-run authenticated vulnerability scan and attach the report." },
+    { "id": "FND-2026-003", "controlId": "CTL-010", "framework": "GDPR", "severity": "high", "title": "DPIA missing for new CRM processing personal data", "status": "open", "raisedDate": "2026-04-01", "auditor": "Privacy Office (synthetic)", "recommendation": "Complete and approve a DPIA before go-live." },
+    { "id": "FND-2025-009", "controlId": "CTL-002", "framework": "SOC2", "severity": "medium", "title": "Conditional Access snapshot is over 12 months old", "status": "open", "raisedDate": "2026-03-05", "auditor": "Internal Audit (synthetic)", "recommendation": "Re-export Conditional Access policies and confirm coverage." }
+  ]
+}

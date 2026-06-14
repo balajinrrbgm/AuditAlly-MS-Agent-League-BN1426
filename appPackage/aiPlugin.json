@@ -1,0 +1,61 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/plugin/v2.3/schema.json",
+  "schema_version": "v2.3",
+  "name_for_human": "AuditAlly",
+  "description_for_human": "Audit & compliance readiness: grounded answers, readiness scoring, gap analysis, and remediation tasks.",
+  "namespace": "auditally",
+  "functions": [
+    {
+      "name": "getReadiness",
+      "description": "Get overall and per-framework audit readiness (SOC2/ISO27001/GDPR) with the top gaps.",
+      "capabilities": {
+        "response_semantics": {
+          "data_path": "$.byFramework",
+          "properties": { "title": "$.framework", "subtitle": "$.band" }
+        }
+      }
+    },
+    {
+      "name": "getControl",
+      "description": "Get detail for one control: required evidence, coverage status, and grounded policy citations."
+    },
+    {
+      "name": "askPolicy",
+      "description": "Answer a compliance/policy question grounded in the approved policy library, with citations."
+    },
+    {
+      "name": "listFindings",
+      "description": "List open audit findings from prior audits with recommendations."
+    },
+    {
+      "name": "createRemediationTask",
+      "description": "Create remediation task(s) to close a control's evidence gaps. Requires the AuditAlly.Write scope."
+    }
+  ],
+  "runtimes": [
+    {
+      "type": "OpenApi",
+      "auth": {
+        "type": "OAuthPluginVault",
+        "reference_id": "${{OAUTH2_REGISTRATION_ID}}"
+      },
+      "spec": {
+        "url": "apiSpecificationFile/openapi.json"
+      },
+      "run_for_functions": [
+        "getReadiness",
+        "getControl",
+        "askPolicy",
+        "listFindings",
+        "createRemediationTask"
+      ]
+    }
+  ],
+  "capabilities": {
+    "localization": {},
+    "conversation_starters": [
+      { "text": "Show our audit readiness overview." },
+      { "text": "What are the top compliance gaps to fix?" }
+    ]
+  }
+}

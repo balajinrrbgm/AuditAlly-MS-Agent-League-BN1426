@@ -1,0 +1,44 @@
+{
+  "name": "auditally",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AuditAlly — Continuous Audit & Compliance Readiness Agent for Microsoft 365 Copilot. Declarative Agent + MCP App + external MCP server (read/write) + OAuth + Foundry IQ grounding.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "icons": "node scripts/generate-icons.mjs",
+    "mcp": "tsx src/mcp/stdio.ts",
+    "mcp:build": "node dist/mcp/stdio.js",
+    "serve": "tsx src/mcp/http.ts",
+    "serve:build": "node dist/mcp/http.js",
+    "demo": "tsx src/demo.ts",
+    "verify": "tsx src/demo.ts --verify",
+    "package": "node scripts/package-app.mjs"
+  },
+  "keywords": [
+    "microsoft-365-copilot",
+    "declarative-agent",
+    "mcp",
+    "mcp-apps",
+    "foundry-iq",
+    "compliance",
+    "audit",
+    "enterprise-agents"
+  ],
+  "author": "Microsoft Agents League — Battle #3 submission",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "express": "^4.21.2",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

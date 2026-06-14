@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.21/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.21",
+  "version": "1.0.0",
+  "id": "${{TEAMS_APP_ID}}",
+  "developer": {
+    "name": "Agents League — AuditAlly",
+    "websiteUrl": "https://github.com/your-org/auditally",
+    "privacyUrl": "https://github.com/your-org/auditally/blob/main/PRIVACY.md",
+    "termsOfUseUrl": "https://github.com/your-org/auditally/blob/main/TERMS.md"
+  },
+  "name": {
+    "short": "AuditAlly",
+    "full": "AuditAlly — Compliance Readiness Agent"
+  },
+  "description": {
+    "short": "Continuous audit & compliance readiness inside Microsoft 365 Copilot.",
+    "full": "AuditAlly is a Microsoft 365 Copilot declarative agent that grounds answers in your policy library (Foundry IQ), maps evidence to SOC 2 / ISO 27001 / GDPR controls, computes live audit readiness, finds gaps, and creates remediation tasks through an OAuth-secured MCP server. All sample data is synthetic."
+  },
+  "icons": {
+    "color": "color.png",
+    "outline": "outline.png"
+  },
+  "accentColor": "#0F6CBD",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "auditally",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": ["identity", "messageTeamMembers"],
+  "validDomains": ["${{OPENAPI_SERVER_DOMAIN}}"]
+}
